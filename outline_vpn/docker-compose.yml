@@ -1,0 +1,38 @@
+version: '3.8'
+
+services:
+    deep-tech-vpn:
+        container_name: deep-tech-vpn
+        image: debian:bookworm-slim
+        privileged: true
+        restart: unless-stopped
+        ports:
+            - "1024-65535:1024-65535/udp"
+            - "443:443/tcp"
+            - "80:80/tcp"
+        volumes:
+            - deep-tech_vpn_data:/root/.outline-server
+        command: >
+            /bin/sh -c "apt update &&
+                  apt install -y curl docker.io &&
+                  wget -qO- https://raw.githubusercontent.com/Jigsaw-Code/outline-server/master/src/server_manager/install_scripts/install_server.sh | bash"
+
+    i-exp_vpn:
+        container_name: i-exp_vpn
+        image: debian:bookworm-slim
+        privileged: true
+        restart: unless-stopped
+        ports:
+            - "20000-30000:20000-30000/udp"
+            - "8443:443/tcp"
+            - "8080:80/tcp"
+        volumes:
+            - i-exp_vpn_data:/root/.outline-server
+        command: >
+            /bin/sh -c "apt update &&
+                  apt install -y curl docker.io &&
+                  wget -qO- https://raw.githubusercontent.com/Jigsaw-Code/outline-server/master/src/server_manager/install_scripts/install_server.sh | bash"
+
+volumes:
+    deep-tech_vpn_data:
+    i-exp_vpn_data:

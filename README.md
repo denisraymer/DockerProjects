@@ -3,6 +3,7 @@
 ##### Команды
 
 ###### 1. Управление образами (Images)
+
 - `docker images` — Показать список всех образов
 - `docker pull <image_name>` — Закгрузить образ из Docker Hub (или другого реестра).
 - `docker build -t <image_name>:<tag> .` — Создать образ из Dockerfile в текущей директории.
@@ -12,6 +13,7 @@
 - `docker load -i <filename>.tar` — Загрузить образ из файла.
 
 ###### 2. Управление контейнерами (Containers)
+
 - `docker ps` — Показать список работающих контейнеров.
 - `docker ps -a` — Показать список всех контейнеров (включая остановленные).
 - `docker run -it --name <container_name> <image_name>` — Запустить контейнер в интерактивном режиме.
@@ -23,3 +25,7 @@
 - `docker exec -it <container_name> bash` — Выполнить команду внутри работающего контейнера (например, зайти в bash).
 - `docker cp <local_path> <container_name>:<container_path>` — Копировать файл или папку в контейнер.
 - `docker cp <container_name>:<container_path> <local_path>` — - Копировать файл или папку из контейнера.
+
+# Компоненты
+
+#### клиент -> служба (daemon) -> хост
